@@ -1,0 +1,141 @@
+body {
+    min-height: 100vh;
+    height: 1px;
+    width: 1300px;
+    margin: 0;
+    
+}
+
+::-webkit-scrollbar {
+	display: none;
+}
+
+.container {
+    overflow: hidden;
+    position: relative;
+    height: 100%;
+    width: 1080px;
+    left: calc(50% - 540px);
+    
+}
+
+.gallery {
+    position: absolute;
+    top: calc(50% - 120px);
+    height: 170px;
+    width: 3000px;
+}
+
+.e-art-small {
+    width: 250px;
+    height: 150px;
+    float: left;
+    position: relative;
+    margin: 10px;
+    display: inline-block;
+}
+
+.e-art-small img {
+    width: 250px;
+    height: 150px;
+    position: absolute;
+}
+
+input[name='scroll'] {
+    display: inline-block;
+    position: relative;
+    top: calc(50% + 75px);
+    left: calc(50% + 10px);
+}
+
+input#start-third-el:checked ~ .gallery {
+    left: -810px;
+}
+
+input#start-fifth-el:checked ~ .gallery {
+    left: -1620px;
+}
+
+.gallery__hover-card {
+    display: none;
+}
+
+.e-art-small:hover .gallery__hover-card, .gallery__hover-card:hover {
+    display: block;
+    position: absolute;
+    height: 400px;
+    padding: 20px;
+    box-sizing: border-box;
+    width: 320px;
+    background: white;
+    box-shadow: 8px 8px 15px 0px rgba(1, 1, 1, .2), -4px -4px 15px 0px rgba(1, 1, 1, .2);
+    z-index: 1;
+    transform: translate(-11%, -10%);
+}
+
+.e-art-small:hover img {
+    transform: scale(1.2);
+    z-index: 2;
+}
+.hover-card__text{
+	display: none;
+}
+
+.e-art-small:hover .hover-card__text, .gallery__hover-card:hover .hover-card__text{
+	display: block;
+	position: relative;
+	top: 200px;
+	margin: 10px;
+	text-align: justify;
+}
+
+input[name='input_show_card'] {
+	display: none;
+}
+
+.modal_blackout {
+	display: none;
+}
+input[name='input_show_card']:checked ~ .modal_blackout {
+	top: 0;
+	left: 0;
+	position: fixed;
+	display: block;
+	height: 100vh;
+	width: 100vw;
+	background: rgb(30, 30, 30);
+	opacity: 0.7;
+	
+
+}
+
+
+/**модальный крестик*/
+
+input[name='input_show_card']:checked ~ label[for='modal_close-cross']{
+	position: absolute;
+	display: block;
+	top:0;
+	/* right: -100px; */
+}
+
+input[name='input_show_card']:checked ~ label[for='modal_close-cross']::after {
+	position: absolute;
+	display: block;
+	content: '';
+	right: -20px;
+	width: 2px;
+	height: 10px;
+	border: 2px solid;
+	transform: rotate(0.15turn);
+}
+
+input#modal_close-cross {
+	display: none;
+}
+
+
+label[for='modal_close-cross']{
+	display: none;
+}
+
