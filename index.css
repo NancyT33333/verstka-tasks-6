@@ -45,7 +45,7 @@ input[name='scroll'] {
     display: inline-block;
     position: relative;
     top: calc(50% + 75px);
-    left: calc(50% + 10px);
+    left: calc(50% - 35px);
 }
 
 input#start-third-el:checked ~ .gallery {
@@ -112,22 +112,32 @@ input[name='input_show_card']:checked ~ .modal_blackout {
 
 /**модальный крестик*/
 
-input[name='input_show_card']:checked ~ label[for='modal_close-cross']{
+input[name='input_show_card']:checked ~ label[for='modal_close-cross'] {
 	position: absolute;
 	display: block;
 	top:0;
-	/* right: -100px; */
+	
+
 }
 
-input[name='input_show_card']:checked ~ label[for='modal_close-cross']::after {
-	position: absolute;
+input[name='input_show_card']:checked ~ label[for='modal_close-cross']::after, 
+input[name='input_show_card']:checked ~ label[for='modal_close-cross']::before {
+	position: fixed;
 	display: block;
 	content: '';
-	right: -20px;
-	width: 2px;
-	height: 10px;
-	border: 2px solid;
-	transform: rotate(0.15turn);
+	top: 30px;
+	right: 30px;
+	width: .5px;
+	height: 25px;
+	border: 2px solid white;
+	background: white;
+	transform: rotate(0.125turn);
+	cursor: pointer;
+}
+
+input[name='input_show_card']:checked ~ label[for='modal_close-cross']::before {
+
+	transform: rotate(-0.125turn);
 }
 
 input#modal_close-cross {
@@ -135,7 +145,21 @@ input#modal_close-cross {
 }
 
 
-label[for='modal_close-cross']{
+input#modal_close-cross:checked ~ label[for='modal_close-cross'], label[for='modal_close-cross'] {
 	display: none;
 }
 
+input[name='input_show_card']:checked + article.e-art-small img {
+	position: fixed;
+	left: calc(50vw - 70px);
+	transform: scale(2); 
+	z-index: 2;
+}
+
+input[name='input_show_card']:checked + article .gallery__hover-card {
+	opacity: 0;
+}
+
+input#modal_close-cross:checked + .modal_blackout {
+	display: none;
+}
